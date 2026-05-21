@@ -1,0 +1,6 @@
+{
+  "name": "Mobile Quiz App",
+  "description": "A elegant mobile-first quiz application integrated with a Google Sheets database and real-time answer verification.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
