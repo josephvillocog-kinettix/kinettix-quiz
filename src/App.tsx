@@ -164,7 +164,7 @@ export default function App() {
 
     const trimmedId = loginId.trim();
     if (!trimmedId) {
-      setLoginError("Please enter your registered user ID.");
+      setLoginError("Please enter your Kinettix ID.");
       return;
     }
 
@@ -367,7 +367,7 @@ export default function App() {
                   <BrandLogo className="w-10 h-10 text-indigo-400" />
                 </div>
                 <p className="text-slate-400 text-[clamp(0.8rem,3vw,0.95rem)] leading-relaxed max-w-[260px] mx-auto">
-                  Please enter your unique ID to access the active quizzes.
+                  Please enter your Kinettix ID.
                 </p>
               </div>
 
@@ -378,7 +378,7 @@ export default function App() {
                     htmlFor="user-id-input"
                     className="block text-slate-400 text-[10px] font-bold tracking-wider uppercase mb-2 pl-1"
                   >
-                    Enter User ID
+                    Enter Kinettix ID
                   </label>
                   <div className="relative">
                     <input
