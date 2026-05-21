@@ -22,6 +22,8 @@ import {
 } from "lucide-react";
 import { User, QuizItem, AppScreen, SubmitResult } from "./types";
 import { decryptText, normalizeText } from "./utils";
+import { BrandLogo } from "./components/BrandLogo";
+import { LoaderGraphics } from "./components/LoaderGraphics";
 
 export default function App() {
   // Screen state
@@ -233,8 +235,13 @@ export default function App() {
 
   // Screen layout renderers
   return (
-    <div className="min-h-screen bg-[#0f172a] flex flex-col items-center justify-center p-4 md:p-8 text-[#f8fafc] font-sans selection:bg-[#6366f1] selection:text-white relative">
+    <div className="min-h-screen bg-[#0f172a] flex flex-col items-center justify-center p-4 md:p-8 text-[#f8fafc] font-sans selection:bg-[#6366f1] selection:text-white relative overflow-x-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(99,102,241,0.12),rgba(0,0,0,0))] pointer-events-none" />
+
+      {/* Dynamic Ambient Background Watermark */}
+      <div className="absolute w-[80vw] h-[80vw] max-w-[600px] max-h-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none select-none z-0">
+        <BrandLogo className="w-full h-full" />
+      </div>
 
       {/* Sleek Outer Dashboard Header */}
       <div className="flex justify-between items-end mb-8 border-b border-slate-800 pb-5 w-full max-w-md md:max-w-xl">
@@ -265,6 +272,11 @@ export default function App() {
 
         {/* Content Box */}
         <div className="flex-1 overflow-y-auto px-5 py-6 flex flex-col relative bg-[#1e293b]">
+          {/* Subtle Branded Background Logo Inside Card */}
+          <div className="absolute w-72 h-72 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] pointer-events-none select-none z-0">
+            <BrandLogo className="w-full h-full" />
+          </div>
+
           <AnimatePresence mode="wait">
             
             {/* SCREEN 1: Loading Users Database */}
@@ -278,18 +290,10 @@ export default function App() {
                 className="flex-1 flex flex-col items-center justify-center text-center my-auto"
                 id="screen-loading-users"
               >
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 rounded-full border-4 border-slate-700 border-t-[#6366f1] animate-spin" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Sparkles className="w-8 h-8 text-indigo-400 animate-pulse" />
-                  </div>
-                </div>
-                <h1 className="text-xl font-bold tracking-tight text-white mb-2">
-                  Initializing App
-                </h1>
-                <p className="text-xs text-slate-400 max-w-[240px]">
-                  Setting up connections and fetching registered users spreadsheet...
-                </p>
+                <LoaderGraphics
+                  label="Initializing App"
+                  sublabel="Setting up secure API tunnels and querying registered database spreadsheet..."
+                />
                 {userLoadError && (
                   <div className="mt-6 p-3 bg-rose-950/50 border border-rose-800/85 rounded-xl text-rose-300 text-xs text-left max-w-xs">
                     <p className="font-semibold mb-1">Failed to connect:</p>
@@ -453,18 +457,10 @@ export default function App() {
                 className="flex-1 flex flex-col items-center justify-center text-center my-auto"
                 id="screen-loading-quiz"
               >
-                <div className="relative mb-6">
-                  <div className="w-20 h-20 rounded-full border-4 border-slate-700 border-t-[#6366f1] animate-spin" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Loader2 className="w-7 h-7 text-indigo-400 animate-spin" />
-                  </div>
-                </div>
-                <h1 className="text-xl font-bold tracking-tight text-white mb-2">
-                  Syncing Event
-                </h1>
-                <p className="text-xs text-slate-400 max-w-[240px]">
-                  Downloading quiz questions and active winning records...
-                </p>
+                <LoaderGraphics
+                  label="Syncing Event"
+                  sublabel="Downloading encrypted live quiz questions and verification registers from Sheets..."
+                />
                 {quizLoadError && (
                   <div className="mt-6 p-4 bg-rose-950/50 border border-rose-800/80 rounded-xl text-rose-300 text-xs text-left max-w-xs">
                     <p className="font-semibold mb-1">Failed to fetch quiz:</p>
@@ -556,13 +552,13 @@ export default function App() {
                         </div>
                       )}
 
-                      {/* Display Question Box matching Sleek Interface styling */}
-                      <div className="p-4 rounded-2xl glass mb-3 text-left relative">
-                        <span className="text-[10px] text-indigo-300 font-mono mb-2.5 block uppercase tracking-wide font-semibold">
+                      {/* Display Question Box matching Sleek Interface styling with adaptive larger text */}
+                      <div className="p-5 rounded-2xl bg-slate-800/50 border border-slate-700/60 shadow-inner mb-3 text-left relative">
+                        <span className="text-[10px] text-indigo-300 font-mono mb-3 block uppercase tracking-wide font-semibold">
                           Decrypted Question
                         </span>
 
-                        <p className="text-sm leading-relaxed text-white font-medium italic mt-1" id="question text">
+                        <p className="text-[clamp(1.2rem,5vw,1.8rem)] leading-snug text-white font-extrabold italic mt-1" id="question text">
                           "{decryptText(
                             activeQuizItems[selectedQuizIndex].question,
                             activeQuizItems[selectedQuizIndex].encryptionkey
