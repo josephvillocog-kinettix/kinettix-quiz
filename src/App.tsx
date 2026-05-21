@@ -389,7 +389,7 @@ export default function App() {
                         setLoginId(e.target.value);
                         if (loginError) setLoginError("");
                       }}
-                      placeholder="e.g. 1"
+                      placeholder="KIP-2020-1234"
                       className="block w-full px-4 py-3.5 bg-slate-800/60 border border-slate-700/60 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-[clamp(0.9rem,3.2vw,1.1rem)] outline-none transition-all"
                     />
                   </div>
@@ -710,10 +710,6 @@ export default function App() {
 
                         {/* Beautiful verified ticket receipt */}
                         <div className="w-full p-4.5 rounded-xl bg-slate-800/40 border border-slate-700/50 text-left my-4 shadow-inner">
-                          <div className="flex justify-between mb-2">
-                            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Receipt ID</span>
-                            <span className="text-[10px] font-mono text-indigo-400 font-extrabold">TXN-77218</span>
-                          </div>
                           <div className="flex justify-between">
                             <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Timestamp</span>
                             <span className="text-[10px] text-slate-400 font-mono font-medium">
