@@ -322,10 +322,9 @@ export default function App() {
               >
                 {/* Header branding */}
                 <div className="mt-6 text-center">
-                  <div className="mx-auto w-16 h-16 bg-[#6366f1] rounded-2xl mb-6 flex items-center justify-center shadow-lg shadow-indigo-500/20 rotate-3 animate-pulse">
-                    <span className="text-2xl">👋</span>
+                  <div className="mx-auto w-16 h-16 bg-indigo-500/10 border border-indigo-500/35 rounded-2xl mb-6 flex items-center justify-center shadow-lg shadow-indigo-500/10 animate-pulse">
+                    <BrandLogo className="w-10 h-10 text-indigo-400" />
                   </div>
-                  <h2 className="text-xl font-bold mb-2 text-white">Welcome Back</h2>
                   <p className="text-slate-400 text-xs mb-8 leading-relaxed max-w-[240px] mx-auto">
                     Please enter your unique ID to access the active quizzes.
                   </p>
