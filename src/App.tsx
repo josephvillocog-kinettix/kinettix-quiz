@@ -370,7 +370,7 @@ export default function App() {
                     type="submit"
                     className="w-full py-3 px-4 bg-[#6366f1] hover:bg-[#5053eb] text-white font-semibold rounded-xl text-sm text-center tracking-wide transition-all active:scale-[0.98] cursor-pointer shadow-lg shadow-indigo-500/15"
                   >
-                    Continue to Dashboard
+                    Login
                   </button>
                 </form>
 
@@ -416,20 +416,16 @@ export default function App() {
 
                 {/* Main Hero Card */}
                 <div className="my-auto space-y-6">
-                  <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-5 relative overflow-hidden shadow-xl">
+                  <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 relative overflow-hidden shadow-xl text-center flex flex-col items-center justify-center">
                     <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl -mr-6 -mt-6" />
                     
-                    <span className="inline-flex items-center gap-1.2 px-2 py-0.5 bg-indigo-500/20 text-indigo-400 rounded text-[9px] font-bold uppercase tracking-wider mb-4">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-indigo-500/20 text-indigo-400 rounded-full text-[10px] font-bold uppercase tracking-wider mb-4">
                       <Sparkles className="w-3 h-3 text-indigo-400" /> Matches Verified
                     </span>
 
                     <h1 className="text-xl font-bold text-white tracking-snug">
-                      Welcome, <span className="text-indigo-400 block text-2xl font-black mt-1">{currentUser.name}</span>!
+                      Welcome, <span className="text-indigo-400 block text-2.5xl font-black mt-1.5">{currentUser.name}</span>!
                     </h1>
-                    
-                    <p className="text-slate-350 text-xs mt-3 leading-relaxed">
-                      You are correctly logged in. We've authenticated your connection. Whenever you're ready, click the button below to start loading and join the quiz event.
-                    </p>
                   </div>
 
                   <button
@@ -458,7 +454,7 @@ export default function App() {
                 id="screen-loading-quiz"
               >
                 <LoaderGraphics
-                  label="Syncing Event"
+                  label="Loading Quiz"
                   sublabel="Downloading encrypted live quiz questions and verification registers from Sheets..."
                 />
                 {quizLoadError && (
